@@ -3,6 +3,8 @@ import flet as ft
 def main(page: ft.Page):
     page.title = "DropdownMenu Equipos"
 
+    imag = ft.Image(src=f"BORUSIA_MONCHENGLASBACH.png")
+    page.add(imag)
 
 
 
@@ -15,4 +17,4 @@ def main(page: ft.Page):
 
 
 
-ft.app(target=main)
+ft.app(target=main,assets_dir="Imagenes")
