@@ -1,14 +1,10 @@
 import flet as ft
-
-def main(page: ft.Page):
-    page.title = "Flet counter example"
-    #page.vertical_alignment = ft.MainAxisAlignment.CENTER
-
+def main(page:ft.Page):
+    page.title = "Imagenes"
+    imag = ft.Image(src=f"BORUSIA_MONCHENGLASBACH.png")
     
+    
+    page.add(imag)
 
 
-
-
-
-
-ft.app(target=main)
+ft.app(target=main,assets_dir="Imagenes")
