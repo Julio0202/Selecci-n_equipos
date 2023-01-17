@@ -2,18 +2,30 @@ import flet as ft
 
 def main(page: ft.Page):
     page.title = "DropdownMenu Equipos"
+    imag = ""
+    def dropdown_changed(e):
+        imag.value = f"Dropdown changed to {dd.value}"
+        page.update()
+        if (dd.value == "Rayo Fuentealbilla"):
+            imag = "RAYO_FUENTEALBILLA.jpg"
+        elif (dd.value == "Depor"):
+            imag = "DEPOR.jpg"
+        elif (dd.value == "Leganés"):
+            imag = "LEGANES.jpg"
+    dd = ft.Dropdown(
+        options=[
+            ft.dropdown.Option("Rayo Fuentealbilla"),
+            ft.dropdown.Option("Depor"),
+            ft.dropdown.Option("Leganés"),
+            ft.dropdown.Option("Real Zaragoza"),
+            ft.dropdown.Option("Borusia Mochenglasbach"),
+            
+        ],
+        width=200,
+        on_change=dropdown_changed
+    )
+    page.add(dd, imag)
 
-    imag = ft.Image(src=f"BORUSIA_MONCHENGLASBACH.png")
-    page.add(imag)
-
-
-
-    Dropdown_Equipos=ft.Dropdown(width=300,options=[ft.dropdown.Option("Rayo Fuentealbilla")],label="Equipos")
-    Dropdown_Equipos.options.append(ft.dropdown.Option("Depor"))
-    Dropdown_Equipos.options.append(ft.dropdown.Option("Leganés"))
-    Dropdown_Equipos.options.append(ft.dropdown.Option("Real Zaragoza"))
-    Dropdown_Equipos.options.append(ft.dropdown.Option("Borusia Mochenglasbach"))
-    page.add (Dropdown_Equipos)
 
 
 
