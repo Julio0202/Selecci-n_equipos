@@ -46,7 +46,7 @@ def main(page: ft.Page):
         )
 
     page.add(img)
-
+    vEquipos = ["Rayo Fuentealbilla", "Depor", "Leganés", "Real Zaragoza", "Borusia Monchenglasbach"]
 
 
 ft.app(target=main,assets_dir="Imagenes")
