@@ -45,6 +45,9 @@ def main(page: ft.Page):
             height=300
         )
 
+    boton=ft.ElevatedButton(text="Añadir equipo")
+    page.add(boton)
+
     page.add(img)
 
 
