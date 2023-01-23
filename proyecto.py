@@ -4,7 +4,6 @@ def main(page: ft.Page):
     page.title = "DropdownMenu Equipos"
     imag = ""
     def dropdown_changed(e):
-        imag.value = f"Dropdown changed to {dd.value}"
         page.update()
         if (dd.value == "Rayo Fuentealbilla"):
             imag = "RAYO_FUENTEALBILLA.jpg"
@@ -12,7 +11,21 @@ def main(page: ft.Page):
             imag = "DEPOR.jpg"
         elif (dd.value == "Leganés"):
             imag = "LEGANES.jpg"
-    dd = ft.Dropdown(
+        elif(dd.value=="Real Zaragoza"):
+            imag = "REAL_ZARAGOZA.jpg"
+        else:
+            (dd.value=="Borusia")
+            imag = "BORUSIA_MONCHENGLASBACH.png"
+
+
+        
+        
+        img.src=f"{imag}"
+    
+        page.update()
+    
+    
+    dd = ft.Dropdown(label="Equipos",
         options=[
             ft.dropdown.Option("Rayo Fuentealbilla"),
             ft.dropdown.Option("Depor"),
@@ -24,8 +37,15 @@ def main(page: ft.Page):
         width=200,
         on_change=dropdown_changed
     )
-    page.add(dd, imag)
+    page.add(dd)
 
+    img = ft.Image(
+            src=f"Imagenes/{imag}",
+            width=300,
+            height=300
+        )
+
+    page.add(img)
 
 
 
