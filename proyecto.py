@@ -32,9 +32,7 @@ def main(page: ft.Page):
             height=300
         )
 
-    img.src="aa"
-    
-    vEquipos = ["ivbaseui"]
+    vEquipos = ["Rayo Fuentealbilla", "Depor", "Leganés", "Real Zaragoza", "Borusia Monchenglasbach"]
     vEquiposSelecionados = []
 
     for equipo in vEquipos:
@@ -42,9 +40,4 @@ def main(page: ft.Page):
     
 
     page.add(menu,img)
- 
-
- 
-
-
 ft.app(target=main,assets_dir="Imagenes")
