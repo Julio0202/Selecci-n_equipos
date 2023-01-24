@@ -1,3 +1,5 @@
+
+
 import flet as ft
 
 def main(page: ft.Page):
@@ -20,6 +22,25 @@ def main(page: ft.Page):
         img.src=f"{imag}"
         page.update()
     
+    def equipolista(e):
+        seleccionado=""
+        
+        if menu.value!=seleccionado:
+            vEquiposSelecionados.append(menu.value)
+        
+        else:
+            dlg = ft.AlertDialog(title="Equipos", on_dismiss=lambda e: print("asdd"))
+            page.dialog = dlg
+            dlg.open = True
+                
+            page.update()
+        menu.value=seleccionado
+
+        print(vEquiposSelecionados)
+   
+
+   
+
 
     
     menu = ft.Dropdown(hint_text="Selecciona un equipo",width=250, on_change=dropdown_changed)
@@ -34,13 +55,16 @@ def main(page: ft.Page):
 
     vEquipos = ["Rayo Fuentealbilla", "Depor", "Leganés", "Real Zaragoza", "Borusia Monchenglasbach"]
     vEquiposSelecionados = []
-    boton=ft.ElevatedButton(text="Añadir equipo")
-    page.add(boton)
+    
+    
 
 
     for equipo in vEquipos:
         menu.options.append(ft.dropdown.Option(equipo))
     
-
+    boton=ft.ElevatedButton(text="Añadir equipo",on_click=equipolista)
+    
+    
     page.add(menu,img)
+    page.add(boton)
 ft.app(target=main,assets_dir="Imagenes")
