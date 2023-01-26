@@ -7,16 +7,16 @@ def main(page: ft.Page):
     imag = ""
     def dropdown_changed(e):
         page.update()
-        if (equipos.value == "Rayo Fuentealbilla"):
+        if (menu.value == "Rayo Fuentealbilla"):
             imag = "RAYO_FUENTEALBILLA.jpg"
-        elif (equipos.value == "Depor"):
+        elif (menu.value == "Depor"):
             imag = "DEPOR.jpg"
-        elif (equipos.value == "Leganés"):
+        elif (menu.value == "Leganés"):
             imag = "LEGANES.jpg"
-        elif(equipos.value=="Real Zaragoza"):
+        elif(menu.value=="Real Zaragoza"):
             imag = "REAL_ZARAGOZA.jpg"
         else:
-            (equipos.value=="Borusia")
+            (menu.value=="Borusia")
             imag = "BORUSIA_MONCHENGLASBACH.png"
 
         img.src=f"{imag}"
@@ -30,7 +30,7 @@ def main(page: ft.Page):
             print(vEquiposSelecionados)
         
         else:
-            dlg = ft.AlertDialog(title=ft.Text("Equipo Repetido"))
+            dlg = ft.AlertDialog(title=ft.Text("Equipo ya seleccionado"))
             page.dialog = dlg
             dlg.open = True
             page.update()
@@ -43,7 +43,7 @@ def main(page: ft.Page):
 
 
     
-    equipos = ft.Dropdown(hint_text="Selecciona un equipo",width=250, on_change=dropdown_changed)
+    menu = ft.Dropdown(hint_text="Selecciona un equipo",width=250, on_change=dropdown_changed)
    
 
 
@@ -60,11 +60,11 @@ def main(page: ft.Page):
 
 
     for equipo in vEquipos:
-        equipos.options.append(ft.dropdown.Option(equipo))
+        menu.options.append(ft.dropdown.Option(equipo))
     
     boton=ft.ElevatedButton(text="Añadir equipo",on_click=equipolista)
     
     
-    page.add(equipos,img)
+    page.add(menu,img)
     page.add(boton)
 ft.app(target=main,assets_dir="Imagenes")
