@@ -7,16 +7,16 @@ def main(page: ft.Page):
     imag = ""
     def dropdown_changed(e):
         page.update()
-        if (menu.value == "Rayo Fuentealbilla"):
+        if (equipos.value == "Rayo Fuentealbilla"):
             imag = "RAYO_FUENTEALBILLA.jpg"
-        elif (menu.value == "Depor"):
+        elif (equipos.value == "Depor"):
             imag = "DEPOR.jpg"
-        elif (menu.value == "Leganés"):
+        elif (equipos.value == "Leganés"):
             imag = "LEGANES.jpg"
-        elif(menu.value=="Real Zaragoza"):
+        elif(equipos.value=="Real Zaragoza"):
             imag = "REAL_ZARAGOZA.jpg"
         else:
-            (menu.value=="Borusia")
+            (equipos.value=="Borusia")
             imag = "BORUSIA_MONCHENGLASBACH.png"
 
         img.src=f"{imag}"
@@ -25,25 +25,25 @@ def main(page: ft.Page):
     def equipolista(e):
         seleccionado=""
         
-        if menu.value!=seleccionado:
-            vEquiposSelecionados.append(menu.value)
+        if(vEquiposSelecionados.count(equipo)==0):
+            vEquiposSelecionados.append(equipo)
+            print(vEquiposSelecionados)
         
         else:
-            dlg = ft.AlertDialog(title="Equipos", on_dismiss=lambda e: print("asdd"))
+            dlg = ft.AlertDialog(title=ft.Text("Equipo Repetido"))
             page.dialog = dlg
             dlg.open = True
-                
             page.update()
-        menu.value=seleccionado
+        
 
-        print(vEquiposSelecionados)
+        
    
 
    
 
 
     
-    menu = ft.Dropdown(hint_text="Selecciona un equipo",width=250, on_change=dropdown_changed)
+    equipos = ft.Dropdown(hint_text="Selecciona un equipo",width=250, on_change=dropdown_changed)
    
 
 
@@ -60,11 +60,11 @@ def main(page: ft.Page):
 
 
     for equipo in vEquipos:
-        menu.options.append(ft.dropdown.Option(equipo))
+        equipos.options.append(ft.dropdown.Option(equipo))
     
     boton=ft.ElevatedButton(text="Añadir equipo",on_click=equipolista)
     
     
-    page.add(menu,img)
+    page.add(equipos,img)
     page.add(boton)
 ft.app(target=main,assets_dir="Imagenes")
