@@ -25,8 +25,8 @@ def main(page: ft.Page):
     def equipolista(e):
         seleccionado=""
         
-        if(vEquiposSelecionados.count(equipo)==0):
-            vEquiposSelecionados.append(equipo)
+        if(vEquiposSelecionados.count(menu.value)==0):
+            vEquiposSelecionados.append(menu.value)
             print(vEquiposSelecionados)
         
         else:
