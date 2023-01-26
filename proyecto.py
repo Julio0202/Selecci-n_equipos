@@ -1,3 +1,5 @@
+
+
 import flet as ft
 
 def main(page: ft.Page):
@@ -5,24 +7,43 @@ def main(page: ft.Page):
     imag = ""
     def dropdown_changed(e):
         page.update()
-        if (menu.value == "Rayo Fuentealbilla"):
+        if (equipos.value == "Rayo Fuentealbilla"):
             imag = "RAYO_FUENTEALBILLA.jpg"
-        elif (menu.value == "Depor"):
+        elif (equipos.value == "Depor"):
             imag = "DEPOR.jpg"
-        elif (menu.value == "Leganés"):
+        elif (equipos.value == "Leganés"):
             imag = "LEGANES.jpg"
-        elif(menu.value=="Real Zaragoza"):
+        elif(equipos.value=="Real Zaragoza"):
             imag = "REAL_ZARAGOZA.jpg"
         else:
-            (menu.value=="Borusia")
+            (equipos.value=="Borusia")
             imag = "BORUSIA_MONCHENGLASBACH.png"
 
         img.src=f"{imag}"
         page.update()
     
+    def equipolista(e):
+        seleccionado=""
+        
+        if(vEquiposSelecionados.count(equipo)==0):
+            vEquiposSelecionados.append(equipo)
+            print(vEquiposSelecionados)
+        
+        else:
+            dlg = ft.AlertDialog(title=ft.Text("Equipo Repetido"))
+            page.dialog = dlg
+            dlg.open = True
+            page.update()
+        
+
+        
+   
+
+   
+
 
     
-    menu = ft.Dropdown(hint_text="Selecciona un equipo",width=250, on_change=dropdown_changed)
+    equipos = ft.Dropdown(hint_text="Selecciona un equipo",width=250, on_change=dropdown_changed)
    
 
 
@@ -34,10 +55,16 @@ def main(page: ft.Page):
 
     vEquipos = ["Rayo Fuentealbilla", "Depor", "Leganés", "Real Zaragoza", "Borusia Monchenglasbach"]
     vEquiposSelecionados = []
-
-    for equipo in vEquipos:
-        menu.options.append(ft.dropdown.Option(equipo))
+    
     
 
-    page.add(menu,img)
+
+    for equipo in vEquipos:
+        equipos.options.append(ft.dropdown.Option(equipo))
+    
+    boton=ft.ElevatedButton(text="Añadir equipo",on_click=equipolista)
+    
+    
+    page.add(equipos,img)
+    page.add(boton)
 ft.app(target=main,assets_dir="Imagenes")
