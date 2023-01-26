@@ -24,17 +24,16 @@ def main(page: ft.Page):
     
     def equipolista(e):
         seleccionado=""
-        
-        if(vEquiposSelecionados.count(equipo)==0):
-            vEquiposSelecionados.append(equipo)
+        if(vEquiposSelecionados.count(menu.value)==0):
+            vEquiposSelecionados.append(menu.value)
             print(vEquiposSelecionados)
+            list_view.controls.append(ft.Text(vEquiposSelecionados.pop))
         
         else:
             dlg = ft.AlertDialog(title=ft.Text("Equipo ya seleccionado"))
             page.dialog = dlg
             dlg.open = True
-            page.update()
-        
+    page.update()
 
         
    
@@ -63,8 +62,11 @@ def main(page: ft.Page):
         menu.options.append(ft.dropdown.Option(equipo))
     
     boton=ft.ElevatedButton(text="Añadir equipo",on_click=equipolista)
+    list_view = ft.ListView(expand=1,spacing=10,padding=20, auto_scroll=True)
+    page.update()
     
-    
+
     page.add(menu,img)
     page.add(boton)
+    page.add(list_view)
 ft.app(target=main,assets_dir="Imagenes")
