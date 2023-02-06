@@ -36,13 +36,17 @@ def main(page: ft.Page):
             page.update()
         
 
+    def cargarequipos():
+        vEquipos=[]
+        f= open("Equipos.txt","r")
+        for linea in f:
+            vEquipos.append(linea) 
+        f.close()
+        return vEquipos
         
-   
-
-   
 
 
-    
+
     menu = ft.Dropdown(hint_text="Selecciona un equipo",width=250, on_change=dropdown_changed)
    
 
@@ -53,7 +57,7 @@ def main(page: ft.Page):
             height=300
         )
 
-    vEquipos = ["Rayo Fuentealbilla", "Depor", "Leganés", "Real Zaragoza", "Borusia Monchenglasbach"]
+    vEquipos = cargarequipos()
     vEquiposSelecionados = []
     
     
