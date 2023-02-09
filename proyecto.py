@@ -26,7 +26,7 @@ def main(page: ft.Page):
         if(vEquiposSelecionados.count(menu.value)==0):
             vEquiposSelecionados.append(menu.value)
             print(vEquiposSelecionados)
-            lv.controls.append(vEquiposSelecionados)
+            lv.controls.append(ft.Text(menu.value))
         else:
             dlg = ft.AlertDialog(title=ft.Text("Equipo ya seleccionado"))
             page.dialog = dlg
