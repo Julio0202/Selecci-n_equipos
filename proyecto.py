@@ -1,5 +1,3 @@
-
-
 import flet as ft
 
 def main(page: ft.Page):
@@ -16,16 +14,15 @@ def main(page: ft.Page):
             imag = "RAYO_FUENTEALBILLA.jpg"
         elif (menu.value == "Depor"):
             imag = "DEPOR.jpg"
-        elif (menu.value == "Leganés"):
+        elif (menu.value == "Leganes"):
             imag = "LEGANES.jpg"
         elif(menu.value=="Real Zaragoza"):
             imag = "REAL_ZARAGOZA.jpg"
-        else:
-            (menu.value=="Borusia")
+        elif(menu.value=="Borusia Monchenglasbach"):
             imag = "BORUSIA_MONCHENGLASBACH.png"
         img.src=f"{imag}"
         page.update()
-        
+    
     def equipolista(e):
         seleccionado=""
         ss=menu.value
@@ -38,10 +35,13 @@ def main(page: ft.Page):
             dlg = ft.AlertDialog(title=ft.Text("Equipo ya seleccionado"))
             page.dialog = dlg
             dlg.open = True
+            img.src="imagen_no_disponible.jpg"
+
         page.update()
     
-        
 
+
+    
         
 
     def cargarequipos():
@@ -53,7 +53,11 @@ def main(page: ft.Page):
         return vEquipos
 
 
-
+    def añadir_equipo(e):
+        g = open("EquiposSeleccionados.txt","w")
+        g.write(str(vEquiposSelecionados))
+        g.close()
+    
     menu = ft.Dropdown(hint_text="Selecciona un equipo",width=250, on_change=dropdown_changed)
 
    
@@ -68,8 +72,8 @@ def main(page: ft.Page):
     
     
     boton=ft.ElevatedButton(text="Añadir equipo",on_click=equipolista)
-    
+    botonañadir = ft.FloatingActionButton(text="Añadir lista", on_click=añadir_equipo)
 
-    page.add(menu,img,lv,boton)
+    page.add(menu,img,lv,boton,botonañadir)
     
 ft.app(target=main,assets_dir="Imagenes")
