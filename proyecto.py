@@ -20,6 +20,8 @@ def main(page: ft.Page):
             imag = "REAL_ZARAGOZA.jpg"
         elif(menu.value=="Borusia Monchenglasbach"):
             imag = "BORUSIA_MONCHENGLASBACH.png"
+        else:
+            imag="imagen_no_disponible.jpg"
         img.src=f"{imag}"
         page.update()
     
@@ -55,7 +57,8 @@ def main(page: ft.Page):
 
     def añadir_equipo(e):
         g = open("EquiposSeleccionados.txt","w")
-        g.write(str(vEquiposSelecionados))
+        for i in vEquiposSelecionados:
+            g.write(i+";")
         g.close()
     
     menu = ft.Dropdown(hint_text="Selecciona un equipo",width=250, on_change=dropdown_changed)
